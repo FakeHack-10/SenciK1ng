@@ -3,192 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GENERADOR SENCI K1NG - Enterprise Core Edition</title>
+    <title>GENERADOR SENCI K1NG - @andresk1ng</title>
+    <!-- FUENTE GAMER / CYBERPUNK -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700;800;900&family=Sacramento&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-deep: #020408;
-            --bg-surface: #0a0e17;
-            --bg-card: #101623;
-            --border-subtle: #1e293b;
-            --border-neon: #00ffcc;
-            --accent-neon: #00ffcc;
-            --accent-glow: rgba(0, 255, 204, 0.3);
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --whatsapp-green: #25D366;
-            --matrix-green: #10b981;
+            --primary-glow: #000000;
+            --secondary-glow: #111111;
+            --accent-color: #444444;
+            --card-bg: rgba(3, 3, 3, 0.94);
+        }
+
+        /* PROTECCIÓN ANTI-COPIA / SELECCIÓN DE TEXTO */
+        body.no-select {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            background-color: var(--bg-deep);
-            color: var(--text-primary);
-            min-height: 100vh;
+            position: relative;
+            background-color: #000000;
+            color: #ffffff;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 12px;
+            min-height: 100vh;
+            padding: 20px 14px;
+            overflow-x: hidden;
+        }
+
+        /* FONDO PITCH BLACK CON TU ICONO */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('28170186fe089750303cae548f71599b.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(25px) brightness(0.08) contrast(1.2);
+            transform: scale(1.1);
+            z-index: -1;
         }
 
         .container {
-            width: 100%;
             max-width: 520px;
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(0, 255, 204, 0.08);
+            width: 100%;
+            text-align: center;
             position: relative;
+            z-index: 1;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
+        .server-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 800;
+            color: #777777;
+            background: rgba(10, 10, 10, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+
+        .server-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffffff;
+            animation: pulse 1.5s infinite;
+        }
+
+        .profile-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .profile-img {
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            border: 2px solid #222222;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 1), 0 0 15px rgba(255, 255, 255, 0.15);
+            object-fit: cover;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            width: 20px;
+            height: 20px;
+            background-color: #ffffff;
+            border: 3.5px solid #000000;
+            border-radius: 50%;
+            box-shadow: 0 0 14px #ffffff;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+        }
+
+        h1 {
+            font-size: 32px;
+            letter-spacing: 1px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 40%, #555555 80%, #111111 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+            text-transform: uppercase;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(10, 10, 10, 0.95);
+            color: #aaaaaa;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 5px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 800;
+            margin-top: 6px;
+            margin-bottom: 14px;
+            backdrop-filter: blur(12px);
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        p.desc {
+            color: #888888;
+            font-size: 14px;
+            margin-bottom: 18px;
+            line-height: 1.4;
+            font-weight: 600;
         }
 
         .steps-indicator {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
-            color: var(--text-secondary);
+            font-size: 10px;
+            color: #666666;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid var(--border-subtle);
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 8px;
         }
 
         .step-active {
-            color: var(--accent-neon);
-            font-weight: 800;
-            text-shadow: 0 0 8px var(--accent-glow);
+            color: #ffffff;
+            font-weight: 900;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
         }
 
-        h1 {
-            font-size: 19px;
-            letter-spacing: 1.5px;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            margin-bottom: 4px;
+        .card {
+            background: linear-gradient(135deg, rgba(8, 8, 8, 0.96), rgba(18, 18, 18, 0.9));
+            border: 1px solid #222222;
+            border-radius: 22px;
+            padding: 22px;
+            margin-bottom: 18px;
+            text-align: left;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(20, 20, 20, 0.5);
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 span {
-            color: var(--accent-neon);
-            text-shadow: 0 0 12px var(--accent-glow);
-        }
-
-        .step-title {
-            font-size: 10px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 16px;
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(180deg, #ffffff, #222222);
+            opacity: 0.8;
         }
 
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
 
         label {
             display: block;
-            font-size: 11px;
-            color: var(--text-secondary);
+            font-size: 11.5px;
+            color: #888888;
             text-transform: uppercase;
-            margin-bottom: 6px;
-            letter-spacing: 0.8px;
-            font-weight: 600;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+            font-weight: 800;
+            text-align: left;
         }
 
         select, input {
             width: 100%;
-            padding: 12px;
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            color: var(--text-primary);
-            font-size: 13px;
+            padding: 14px;
+            background: rgba(5, 5, 5, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
             outline: none;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
             transition: all 0.3s ease;
+        }
+
+        select option {
+            background-color: #0c0c0c;
+            color: #ffffff;
+            padding: 10px;
         }
 
         select:focus, input:focus {
-            border-color: var(--border-neon);
-            box-shadow: 0 0 15px var(--accent-glow);
+            border-color: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
         }
+
+        input::placeholder { color: #444444; }
 
         .btn {
-            width: 100%;
-            padding: 13px;
-            background-color: var(--accent-neon);
-            color: var(--bg-deep);
-            border: none;
-            border-radius: 12px;
-            font-weight: 900;
-            font-size: 13px;
-            cursor: pointer;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: all 0.3s ease;
-            margin-top: 6px;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .btn:hover {
-            background-color: #00b38f;
-            box-shadow: 0 0 25px rgba(0, 255, 204, 0.5);
-        }
-
-        .whatsapp-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             width: 100%;
-            padding: 11px;
-            background-color: transparent;
-            color: var(--whatsapp-green);
-            border: 1px solid var(--whatsapp-green);
-            border-radius: 12px;
-            font-weight: 700;
-            font-size: 11px;
+            padding: 15px;
+            border-radius: 16px;
             text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            transition: all 0.3s ease;
+            font-weight: 900;
+            font-size: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            margin-top: 12px;
+            border: 1px solid #444;
+            background: linear-gradient(135deg, #1a1a1a, #000000);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.25);
+            border-color: #ffffff;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #111111, #050505);
+            border: 1px solid #25D366;
+            color: #25D366;
+            margin-top: 14px;
         }
 
         .whatsapp-btn:hover {
-            background-color: rgba(37, 211, 102, 0.12);
-            box-shadow: 0 0 15px rgba(37, 211, 102, 0.25);
+            background: rgba(37, 211, 102, 0.1);
+            border-color: #25D366;
+            box-shadow: 0 0 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: #25D366;
+            flex-shrink: 0;
         }
 
         .hidden {
-            display: none;
-        }
-
-        .result-box {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: 12px;
-            padding: 14px;
-            margin-top: 8px;
-            max-height: 280px;
-            overflow-y: auto;
+            display: none !important;
         }
 
         .result-item {
             display: flex;
             justify-content: space-between;
-            padding: 7px 0;
-            border-bottom: 1px solid var(--border-subtle);
-            font-size: 12px;
+            padding: 10px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            font-size: 13.5px;
         }
 
         .result-item:last-child {
@@ -196,29 +316,32 @@
         }
 
         .result-label {
-            color: var(--text-secondary);
+            color: #888888;
+            font-weight: 700;
         }
 
         .result-value {
-            font-weight: 700;
-            color: var(--accent-neon);
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255,255,255,0.2);
         }
 
         .radio-group {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
+            gap: 10px;
         }
 
         .radio-card {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-subtle);
-            border-radius: 10px;
-            padding: 10px;
+            background: rgba(5, 5, 5, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 12px;
             text-align: center;
             cursor: pointer;
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 800;
+            color: #888888;
             transition: all 0.2s ease;
         }
 
@@ -227,406 +350,415 @@
         }
 
         .radio-card.selected {
-            border-color: var(--border-neon);
-            background-color: rgba(0, 255, 204, 0.06);
-            color: var(--accent-neon);
-            box-shadow: 0 0 10px var(--accent-glow);
+            border-color: #ffffff;
+            background: linear-gradient(135deg, #1c1c1c, #0a0a0a);
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
         }
 
         .hardware-badge {
-            font-size: 9px;
-            background: #0f172a;
-            color: var(--matrix-green);
-            padding: 4px 8px;
-            border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 8px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            font-family: monospace;
-            font-weight: 700;
+            font-size: 11px;
+            background: #0a0a0a;
+            color: #ffffff;
+            padding: 8px 12px;
+            border-radius: 10px;
+            display: block;
+            margin-bottom: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            font-weight: 800;
+            text-align: center;
+            letter-spacing: 0.5px;
         }
 
-        .counter-badge {
-            font-size: 9px;
-            color: var(--text-secondary);
-            float: right;
-            margin-top: 4px;
+        footer {
+            margin-top: 30px;
+            padding-bottom: 12px;
+            font-size: 13px;
+            color: #555555;
+            font-weight: 700;
         }
     </style>
 </head>
-<body>
+<body class="no-select">
 
-<div class="container">
-    <div class="header">
-        <div class="steps-indicator">
-            <span id="ind-1" class="step-active">01 Hardware</span>
-            <span id="ind-2">02 Parámetros</span>
-            <span id="ind-3">03 Motor</span>
-            <span id="ind-4">04 Reporte</span>
+    <div class="container">
+        <div class="server-status">
+            <div class="server-dot"></div> ENGINE v26: ONLINE (12ms)
         </div>
-        <div class="step-title" id="step-counter">Paso 1 de 4</div>
-        <h1>GENERADOR SENCI <span>K1NG</span></h1>
-    </div>
 
-    <!-- PASO 1: SELECCIÓN INDIVIDUAL Y BUSCADOR MASIVO -->
-    <div id="step-1" class="step-content">
-        <div class="form-group">
-            <label>Buscador Global (Más de 1,200 Modelos Individuales)</label>
-            <input type="text" id="search-input" placeholder="Escribe marca o modelo ej: S24, iPhone 15, Redmi, A55, Edge..." oninput="filterHardwareDatabase()">
-            <span class="counter-badge" id="device-counter">Cargando base de datos...</span>
+        <div class="profile-container">
+            <img src="28170186fe089750303cae548f71599b.jpg" alt="@andresk1ng Logo" class="profile-img">
+            <div class="status-dot"></div>
         </div>
-        <div class="form-group">
-            <label>Selecciona el Dispositivo Individual Exacto</label>
-            <select id="model-select" size="6" style="height: 145px;">
-                <!-- Dinámico masivo individual -->
-            </select>
-        </div>
-        <button class="btn" onclick="nextStep(2)">Siguiente: Parámetros</button>
-    </div>
+        
+        <h1>GENERADOR SENCI</h1>
+        <span class="badge">🦇 @andresk1ng PRO EDITION</span>
+        
+        <p class="desc">💀 CALIBRACIÓN DE HARDWARE INDIVIDUAL 💀<br>Selecciona tu dispositivo exacto para obtener una sensibilidad optimizada y precisa.</p>
+        
+        <div class="card">
+            <div class="steps-indicator">
+                <span id="ind-1" class="step-active">01 HARDWARE</span>
+                <span id="ind-2">02 PARÁMETROS</span>
+                <span id="ind-3">03 PERFIL</span>
+                <span id="ind-4">04 REPORTE</span>
+            </div>
 
-    <!-- PASO 2: CONFIGURACIÓN TÉCNICA -->
-    <div id="step-2" class="step-content hidden">
-        <div class="form-group">
-            <label>Tamaño Botón de Disparo (%) [1 - 100]</label>
-            <input type="number" id="fire-btn" value="38" min="5" max="95">
-        </div>
-        <div class="form-group">
-            <label>DPI Sistema / Ancho Mínimo Android</label>
-            <input type="number" id="dpi-input" value="600" min="320" max="960">
-        </div>
-        <button class="btn" onclick="nextStep(3)">Siguiente: Estilo Senci</button>
-    </div>
+            <!-- PASO 1: SELECCIÓN INDIVIDUAL Y BUSCADOR MASIVO -->
+            <div id="step-1" class="step-content">
+                <div class="form-group">
+                    <label>Buscador Global (Más de 1,200 Modelos Individuales)</label>
+                    <input type="text" id="search-input" placeholder="Ej: S24 Ultra, iPhone 15, Redmi, A55..." oninput="filterHardwareDatabase()">
+                </div>
+                <div class="form-group">
+                    <label>Selecciona el Dispositivo Individual Exacto</label>
+                    <select id="model-select" size="6" style="height: 160px;">
+                        <!-- Dinámico masivo individual -->
+                    </select>
+                </div>
+                <button class="btn" onclick="nextStep(2)">Siguiente: Parámetros</button>
+            </div>
 
-    <!-- PASO 3: TIPO DE SENSIBILIDAD -->
-    <div id="step-3" class="step-content hidden">
-        <div class="form-group">
-            <label>Selecciona el Perfil de Respuesta Táctil</label>
-            <div class="radio-group">
-                <label class="radio-card selected" onclick="selectSenci('alta', this)">
-                    <input type="radio" name="senci-type" value="alta" checked> Senci Alta (Todo Roja)
-                </label>
-                <label class="radio-card" onclick="selectSenci('media', this)">
-                    <input type="radio" name="senci-type" value="media"> Senci Media (Precisa)
-                </label>
-                <label class="radio-card" onclick="selectSenci('baja', this)">
-                    <input type="radio" name="senci-type" value="baja"> Senci Baja (Controlada)
-                </label>
-                <label class="radio-card" onclick="selectSenci('custom', this)">
-                    <input type="radio" name="senci-type" value="custom"> K1NG Pro (Híbrida)
-                </label>
+            <!-- PASO 2: CONFIGURACIÓN TÉCNICA -->
+            <div id="step-2" class="step-content hidden">
+                <div class="form-group">
+                    <label>Tamaño Botón de Disparo (%) [1 - 100]</label>
+                    <input type="number" id="fire-btn" value="38" min="5" max="95">
+                </div>
+                <div class="form-group">
+                    <label>DPI Sistema / Ancho Mínimo Android</label>
+                    <input type="number" id="dpi-input" value="600" min="320" max="960">
+                </div>
+                <button class="btn" onclick="nextStep(3)">Siguiente: Estilo Senci</button>
+            </div>
+
+            <!-- PASO 3: TIPO DE SENSIBILIDAD -->
+            <div id="step-3" class="step-content hidden">
+                <div class="form-group">
+                    <label>Selecciona el Perfil de Respuesta Táctil</label>
+                    <div class="radio-group">
+                        <label class="radio-card selected" onclick="selectSenci('alta', this)">
+                            <input type="radio" name="senci-type" value="alta" checked> Senci Alta (Todo Roja)
+                        </label>
+                        <label class="radio-card" onclick="selectSenci('media', this)">
+                            <input type="radio" name="senci-type" value="media"> Senci Media (Precisa)
+                        </label>
+                        <label class="radio-card" onclick="selectSenci('baja', this)">
+                            <input type="radio" name="senci-type" value="baja"> Senci Baja (Controlada)
+                        </label>
+                        <label class="radio-card" onclick="selectSenci('custom', this)">
+                            <input type="radio" name="senci-type" value="custom"> K1NG Pro (Híbrida)
+                        </label>
+                    </div>
+                </div>
+                <button class="btn" onclick="executeEnterpriseEngine()">Compilar Senci Exacta</button>
+            </div>
+
+            <!-- PASO 4: RESULTADO DE HARDWARE INDIVIDUAL -->
+            <div id="step-4" class="step-content hidden">
+                <div class="hardware-badge" id="hardware-specs-badge">Procesador & Display Analizados</div>
+                <div class="result-box" id="output-config" style="margin-bottom: 14px;">
+                    <!-- Inyectado por Motor K1NG Enterprise -->
+                </div>
+                <button class="btn" onclick="resetWizard()">Generar Nueva Senci</button>
+                <a href="https://whatsapp.com/channel/0029Vb8MejvKLaHfkVTKNL2L" target="_blank" class="btn whatsapp-btn">
+                    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    CANAL DE WHATSAPP DEL CREADOR
+                </a>
             </div>
         </div>
-        <button class="btn" onclick="executeEnterpriseEngine()">Compilar Senci Exacta</button>
     </div>
 
-    <!-- PASO 4: RESULTADO DE HARDWARE INDIVIDUAL -->
-    <div id="step-4" class="step-content hidden">
-        <div class="hardware-badge" id="hardware-specs-badge">Procesador & Display Analizados</div>
-        <div class="result-box" id="output-config">
-            <!-- Inyectado por Motor K1NG Enterprise -->
-        </div>
-        <button class="btn" onclick="resetWizard()" style="margin-top: 8px;">Generar Nueva Senci</button>
-        <a href="https://whatsapp.com/channel/0029Vb8MejvKLaHfkVTKNL2L" target="_blank" class="whatsapp-btn">
-            📢 Canal de WhatsApp del Creador
-        </a>
-    </div>
-</div>
+    <footer>
+        <p>© 2026 @andresk1ng - Todos los derechos reservados.</p>
+    </footer>
 
-<script>
-    /* 
-      BASE DE DATOS MASIVA DE HARDWARE INDIVIDUAL (Más de 1200 variantes exactas)
-      Incluyendo Procesador, Pantalla, Tasa de Refresco (Hz) y Muestreo Táctil (Touch Sampling)
-    */
-    const enterpriseDevices = [
-        // --- SAMSUNG GALAXY S SERIES (INDIVIDUALES) ---
-        { name: "Samsung Galaxy S25 Ultra", soc: "Snapdragon 8 Elite", screen: "6.9\" Dynamic AMOLED 2X", hz: "120Hz", touch: "480Hz" },
-        { name: "Samsung Galaxy S25+", soc: "Exynos 2500 / Snapdragon 8 Elite", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S25", soc: "Exynos 2500 / Snapdragon 8 Elite", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S24 Ultra", soc: "Snapdragon 8 Gen 3 for Galaxy", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "480Hz" },
-        { name: "Samsung Galaxy S24+", soc: "Exynos 2400 / Snapdragon 8 Gen 3", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S24", soc: "Exynos 2400 / Snapdragon 8 Gen 3", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S23 Ultra", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "480Hz" },
-        { name: "Samsung Galaxy S23+", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.6\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S23", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.1\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S23 FE", soc: "Exynos 2200 / Snapdragon 8 Gen 1", screen: "6.4\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S22 Ultra", soc: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S22+", soc: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.6\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S22", soc: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.1\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S21 Ultra", soc: "Snapdragon 888 / Exynos 2100", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy S21+", soc: "Snapdragon 888 / Exynos 2100", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S21", soc: "Snapdragon 888 / Exynos 2100", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S21 FE 5G", soc: "Snapdragon 888 / Exynos 2100", screen: "6.4\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S20 Ultra", soc: "Snapdragon 865 / Exynos 990", screen: "6.9\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S20+", soc: "Snapdragon 865 / Exynos 990", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S20", soc: "Snapdragon 865 / Exynos 990", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S20 FE 5G", soc: "Snapdragon 865 5G", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy S10+", soc: "Exynos 9820 / Snapdragon 855", screen: "6.4\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy S10", soc: "Exynos 9820 / Snapdragon 855", screen: "6.1\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy S10e", soc: "Exynos 9820 / Snapdragon 855", screen: "5.8\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
+    <script>
+        document.oncontextmenu = () => false;
 
-        // --- SAMSUNG GALAXY Z SERIES (PLEGABLES INDIVIDUALES) ---
-        { name: "Samsung Galaxy Z Fold 6", soc: "Snapdragon 8 Gen 3 for Galaxy", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy Z Fold 5", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy Z Fold 4", soc: "Snapdragon 8+ Gen 1", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy Z Fold 3", soc: "Snapdragon 888 5G", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy Z Flip 6", soc: "Snapdragon 8 Gen 3 for Galaxy", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy Z Flip 5", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
-        { name: "Samsung Galaxy Z Flip 4", soc: "Snapdragon 8+ Gen 1", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy Z Flip 3", soc: "Snapdragon 888 5G", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+        const enterpriseDevices = [
+            // --- SAMSUNG GALAXY S SERIES ---
+            { name: "Samsung Galaxy S25 Ultra", soc: "Snapdragon 8 Elite", screen: "6.9\" Dynamic AMOLED 2X", hz: "120Hz", touch: "480Hz" },
+            { name: "Samsung Galaxy S25+", soc: "Exynos 2500 / Snapdragon 8 Elite", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S25", soc: "Exynos 2500 / Snapdragon 8 Elite", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S24 Ultra", soc: "Snapdragon 8 Gen 3 for Galaxy", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "480Hz" },
+            { name: "Samsung Galaxy S24+", soc: "Exynos 2400 / Snapdragon 8 Gen 3", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S24", soc: "Exynos 2400 / Snapdragon 8 Gen 3", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S23 Ultra", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "480Hz" },
+            { name: "Samsung Galaxy S23+", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.6\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S23", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.1\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S23 FE", soc: "Exynos 2200 / Snapdragon 8 Gen 1", screen: "6.4\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S22 Ultra", soc: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S22+", soc: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.6\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S22", soc: "Snapdragon 8 Gen 1 / Exynos 2200", screen: "6.1\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S21 Ultra", soc: "Snapdragon 888 / Exynos 2100", screen: "6.8\" Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy S21+", soc: "Snapdragon 888 / Exynos 2100", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S21", soc: "Snapdragon 888 / Exynos 2100", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S21 FE 5G", soc: "Snapdragon 888 / Exynos 2100", screen: "6.4\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S20 Ultra", soc: "Snapdragon 865 / Exynos 990", screen: "6.9\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S20+", soc: "Snapdragon 865 / Exynos 990", screen: "6.7\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S20", soc: "Snapdragon 865 / Exynos 990", screen: "6.2\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S20 FE 5G", soc: "Snapdragon 865 5G", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy S10+", soc: "Exynos 9820 / Snapdragon 855", screen: "6.4\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy S10", soc: "Exynos 9820 / Snapdragon 855", screen: "6.1\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy S10e", soc: "Exynos 9820 / Snapdragon 855", screen: "5.8\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
 
-        // --- SAMSUNG GALAXY A SERIES (GAMA BAJA A ALTA INDIVIDUALES) ---
-        { name: "Samsung Galaxy A55 5G", soc: "Exynos 1480", screen: "6.6\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy A54 5G", soc: "Exynos 1380", screen: "6.4\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy A53 5G", soc: "Exynos 1280", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A52s 5G", soc: "Snapdragon 778G 5G", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy A52", soc: "Snapdragon 720G", screen: "6.5\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A51", soc: "Exynos 9611", screen: "6.5\" Super AMOLED", hz: "60Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A35 5G", soc: "Exynos 1380", screen: "6.6\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy A34 5G", soc: "MediaTek Dimensity 1080", screen: "6.6\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy A33 5G", soc: "Exynos 1280", screen: "6.4\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A32 4G", soc: "MediaTek Helio G80", screen: "6.4\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A32 5G", soc: "MediaTek Dimensity 720", screen: "6.5\" TFT LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A25 5G", soc: "Exynos 1280", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy A24", soc: "MediaTek Helio G99", screen: "6.5\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A23 5G", soc: "Snapdragon 695 5G", screen: "6.6\" PLS LCD", hz: "120Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A22 5G", soc: "MediaTek Dimensity 700", screen: "6.6\" TFT LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A16 5G", soc: "Exynos 1330", screen: "6.7\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A15 5G", soc: "MediaTek Dimensity 6100+", screen: "6.5\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A14 5G", soc: "Exynos 1330 / Dimensity 700", screen: "6.6\" PLS LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A13", soc: "Exynos 850", screen: "6.6\" PLS LCD", hz: "60Hz", touch: "120Hz" },
-        { name: "Samsung Galaxy A12", soc: "MediaTek Helio P35", screen: "6.5\" PLS LCD", hz: "60Hz", touch: "120Hz" },
-        { name: "Samsung Galaxy A05s", soc: "Snapdragon 680", screen: "6.7\" PLS LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy A05", soc: "MediaTek Helio G85", screen: "6.7\" PLS LCD", hz: "60Hz", touch: "120Hz" },
-        { name: "Samsung Galaxy A04s", soc: "Exynos 850", screen: "6.5\" PLS LCD", hz: "90Hz", touch: "120Hz" },
-        { name: "Samsung Galaxy A03s", soc: "MediaTek Helio P35", screen: "6.5\" PLS LCD", hz: "60Hz", touch: "120Hz" },
+            // --- SAMSUNG GALAXY Z SERIES ---
+            { name: "Samsung Galaxy Z Fold 6", soc: "Snapdragon 8 Gen 3 for Galaxy", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy Z Fold 5", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy Z Fold 4", soc: "Snapdragon 8+ Gen 1", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy Z Fold 3", soc: "Snapdragon 888 5G", screen: "7.6\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy Z Flip 6", soc: "Snapdragon 8 Gen 3 for Galaxy", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy Z Flip 5", soc: "Snapdragon 8 Gen 2 for Galaxy", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "360Hz" },
+            { name: "Samsung Galaxy Z Flip 4", soc: "Snapdragon 8+ Gen 1", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy Z Flip 3", soc: "Snapdragon 888 5G", screen: "6.7\" Foldable Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
 
-        // --- SAMSUNG GALAXY NOTE & M SERIES (INDIVIDUALES) ---
-        { name: "Samsung Galaxy Note 20 Ultra", soc: "Snapdragon 865+ / Exynos 990", screen: "6.9\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy Note 20", soc: "Snapdragon 865+ / Exynos 990", screen: "6.7\" Super AMOLED Plus", hz: "60Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy Note 10+", soc: "Snapdragon 855 / Exynos 9825", screen: "6.8\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy M54 5G", soc: "Exynos 1380", screen: "6.7\" Super AMOLED Plus", hz: "120Hz", touch: "240Hz" },
-        { name: "Samsung Galaxy M34 5G", soc: "Exynos 1280", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "180Hz" },
-        { name: "Samsung Galaxy M14 5G", soc: "Exynos 1330", screen: "6.6\" PLS LCD", hz: "90Hz", touch: "180Hz" },
+            // --- SAMSUNG GALAXY A SERIES ---
+            { name: "Samsung Galaxy A55 5G", soc: "Exynos 1480", screen: "6.6\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy A54 5G", soc: "Exynos 1380", screen: "6.4\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy A53 5G", soc: "Exynos 1280", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A52s 5G", soc: "Snapdragon 778G 5G", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy A52", soc: "Snapdragon 720G", screen: "6.5\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A51", soc: "Exynos 9611", screen: "6.5\" Super AMOLED", hz: "60Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A35 5G", soc: "Exynos 1380", screen: "6.6\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy A34 5G", soc: "MediaTek Dimensity 1080", screen: "6.6\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy A33 5G", soc: "Exynos 1280", screen: "6.4\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A32 4G", soc: "MediaTek Helio G80", screen: "6.4\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A32 5G", soc: "MediaTek Dimensity 720", screen: "6.5\" TFT LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A25 5G", soc: "Exynos 1280", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy A24", soc: "MediaTek Helio G99", screen: "6.5\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A23 5G", soc: "Snapdragon 695 5G", screen: "6.6\" PLS LCD", hz: "120Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A22 5G", soc: "MediaTek Dimensity 700", screen: "6.6\" TFT LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A16 5G", soc: "Exynos 1330", screen: "6.7\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A15 5G", soc: "MediaTek Dimensity 6100+", screen: "6.5\" Super AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A14 5G", soc: "Exynos 1330 / Dimensity 700", screen: "6.6\" PLS LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A13", soc: "Exynos 850", screen: "6.6\" PLS LCD", hz: "60Hz", touch: "120Hz" },
+            { name: "Samsung Galaxy A12", soc: "MediaTek Helio P35", screen: "6.5\" PLS LCD", hz: "60Hz", touch: "120Hz" },
+            { name: "Samsung Galaxy A05s", soc: "Snapdragon 680", screen: "6.7\" PLS LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy A05", soc: "MediaTek Helio G85", screen: "6.7\" PLS LCD", hz: "60Hz", touch: "120Hz" },
+            { name: "Samsung Galaxy A04s", soc: "Exynos 850", screen: "6.5\" PLS LCD", hz: "90Hz", touch: "120Hz" },
+            { name: "Samsung Galaxy A03s", soc: "MediaTek Helio P35", screen: "6.5\" PLS LCD", hz: "60Hz", touch: "120Hz" },
 
-        // --- APPLE iPHONE SERIES (INDIVIDUALES COMPLETAS) ---
-        { name: "Apple iPhone 16 Pro Max", soc: "Apple A18 Pro (6-core GPU)", screen: "6.9\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 16 Pro", soc: "Apple A18 Pro (6-core GPU)", screen: "6.3\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 16 Plus", soc: "Apple A18 (5-core GPU)", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 16", soc: "Apple A18 (5-core GPU)", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 15 Pro Max", soc: "Apple A17 Pro", screen: "6.7\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 15 Pro", soc: "Apple A17 Pro", screen: "6.1\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 15 Plus", soc: "Apple A16 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 15", soc: "Apple A16 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 14 Pro Max", soc: "Apple A16 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 14 Pro", soc: "Apple A16 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 14 Plus", soc: "Apple A15 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 14", soc: "Apple A15 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 13 Pro Max", soc: "Apple A15 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 13 Pro", soc: "Apple A15 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
-        { name: "Apple iPhone 13", soc: "Apple A15 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 13 mini", soc: "Apple A15 Bionic", screen: "5.4\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 12 Pro Max", soc: "Apple A14 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 12 Pro", soc: "Apple A14 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 12", soc: "Apple A14 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 12 mini", soc: "Apple A14 Bionic", screen: "5.4\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
-        { name: "Apple iPhone 11 Pro Max", soc: "Apple A13 Bionic", screen: "6.5\" Super Retina XDR OLED", hz: "60Hz", touch: "120Hz Touch" },
-        { name: "Apple iPhone 11 Pro", soc: "Apple A13 Bionic", screen: "5.8\" Super Retina XDR OLED", hz: "60Hz", touch: "120Hz Touch" },
-        { name: "Apple iPhone 11", soc: "Apple A13 Bionic", screen: "6.1\" Liquid Retina IPS LCD", hz: "60Hz", touch: "120Hz Touch" },
-        { name: "Apple iPhone SE (2022) 3rd Gen", soc: "Apple A15 Bionic", screen: "4.7\" Retina HD IPS", hz: "60Hz", touch: "120Hz Touch" },
-        { name: "Apple iPhone SE (2020) 2nd Gen", soc: "Apple A13 Bionic", screen: "4.7\" Retina HD IPS", hz: "60Hz", touch: "120Hz Touch" },
-        { name: "Apple iPhone X / XS / XS Max", soc: "Apple A11 / A12 Bionic", screen: "5.8\" / 6.5\" Super Retina OLED", hz: "60Hz", touch: "120Hz Touch" },
-        { name: "Apple iPhone 8 / 8 Plus", soc: "Apple A11 Bionic", screen: "4.7\" / 5.5\" Retina HD", hz: "60Hz", touch: "120Hz Touch" },
+            // --- SAMSUNG GALAXY NOTE & M SERIES ---
+            { name: "Samsung Galaxy Note 20 Ultra", soc: "Snapdragon 865+ / Exynos 990", screen: "6.9\" Dynamic AMOLED 2X", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy Note 20", soc: "Snapdragon 865+ / Exynos 990", screen: "6.7\" Super AMOLED Plus", hz: "60Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy Note 10+", soc: "Snapdragon 855 / Exynos 9825", screen: "6.8\" Dynamic AMOLED", hz: "60Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy M54 5G", soc: "Exynos 1380", screen: "6.7\" Super AMOLED Plus", hz: "120Hz", touch: "240Hz" },
+            { name: "Samsung Galaxy M34 5G", soc: "Exynos 1280", screen: "6.5\" Super AMOLED", hz: "120Hz", touch: "180Hz" },
+            { name: "Samsung Galaxy M14 5G", soc: "Exynos 1330", screen: "6.6\" PLS LCD", hz: "90Hz", touch: "180Hz" },
 
-        // --- XIAOMI / REDMI / POCO SERIES (INDIVIDUALES) ---
-        { name: "Xiaomi 14 Ultra", soc: "Snapdragon 8 Gen 3", screen: "6.73\" LTPO AMOLED", hz: "120Hz", touch: "300Hz" },
-        { name: "Xiaomi 14", soc: "Snapdragon 8 Gen 3", screen: "6.36\" LTPO OLED", hz: "120Hz", touch: "300Hz" },
-        { name: "Xiaomi 13 Pro", soc: "Snapdragon 8 Gen 2", screen: "6.73\" LTPO AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Redmi Note 13 Pro+", soc: "MediaTek Dimensity 7200 Ultra", screen: "6.67\" AMOLED Curved", hz: "120Hz", touch: "2160Hz Instant Touch" },
-        { name: "Redmi Note 13 Pro 5G", soc: "Snapdragon 7s Gen 2", screen: "6.67\" AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
-        { name: "Redmi Note 13 5G", soc: "MediaTek Dimensity 6080", screen: "6.67\" AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Redmi Note 12 Pro+", soc: "MediaTek Dimensity 1080", screen: "6.67\" Flow AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Redmi Note 12 5G", soc: "Snapdragon 4 Gen 1", screen: "6.67\" AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Redmi Note 11 Pro 5G", soc: "Snapdragon 695 5G", screen: "6.67\" Super AMOLED", hz: "120Hz", touch: "360Hz" },
-        { name: "Redmi Note 11", soc: "Snapdragon 680", screen: "6.43\" AMOLED", hz: "90Hz", touch: "180Hz" },
-        { name: "Redmi Note 10 Pro", soc: "Snapdragon 732G", screen: "6.67\" AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "POCO F6 Pro", soc: "Snapdragon 8 Gen 2", screen: "6.67\" WQHD+ Flow AMOLED", hz: "120Hz", touch: "480Hz Touch Sampling" },
-        { name: "POCO F6", soc: "Snapdragon 8s Gen 3", screen: "6.67\" AMOLED", hz: "120Hz", touch: "480Hz Touch Sampling" },
-        { name: "POCO F5 Pro", soc: "Snapdragon 8+ Gen 1", screen: "6.67\" WQHD+ AMOLED", hz: "120Hz", touch: "480Hz Touch Sampling" },
-        { name: "POCO F5", soc: "Snapdragon 7+ Gen 2", screen: "6.67\" Flow AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "POCO X6 Pro", soc: "MediaTek Dimensity 8300 Ultra", screen: "6.67\" CrystalRes 1.5K Flow AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
-        { name: "POCO X6 5G", soc: "Snapdragon 7s Gen 2", screen: "6.67\" AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
-        { name: "POCO X5 Pro 5G", soc: "Snapdragon 778G 5G", screen: "6.67\" Xfinity AMOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "POCO X3 Pro", soc: "Snapdragon 860", screen: "6.67\" IPS LCD", hz: "120Hz", touch: "240Hz" },
-        { name: "POCO M6 Pro", soc: "MediaTek Helio G99 Ultra", screen: "6.67\" Flow AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
-        { name: "POCO M5", soc: "MediaTek Helio G99", screen: "6.58\" IPS LCD", hz: "90Hz", touch: "240Hz" },
+            // --- APPLE iPHONE SERIES ---
+            { name: "Apple iPhone 16 Pro Max", soc: "Apple A18 Pro (6-core GPU)", screen: "6.9\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 16 Pro", soc: "Apple A18 Pro (6-core GPU)", screen: "6.3\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 16 Plus", soc: "Apple A18 (5-core GPU)", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 16", soc: "Apple A18 (5-core GPU)", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 15 Pro Max", soc: "Apple A17 Pro", screen: "6.7\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 15 Pro", soc: "Apple A17 Pro", screen: "6.1\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 15 Plus", soc: "Apple A16 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 15", soc: "Apple A16 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 14 Pro Max", soc: "Apple A16 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 14 Pro", soc: "Apple A16 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 14 Plus", soc: "Apple A15 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 14", soc: "Apple A15 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 13 Pro Max", soc: "Apple A15 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 13 Pro", soc: "Apple A15 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "120Hz", touch: "480Hz ProMotion" },
+            { name: "Apple iPhone 13", soc: "Apple A15 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 13 mini", soc: "Apple A15 Bionic", screen: "5.4\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 12 Pro Max", soc: "Apple A14 Bionic", screen: "6.7\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 12 Pro", soc: "Apple A14 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 12", soc: "Apple A14 Bionic", screen: "6.1\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 12 mini", soc: "Apple A14 Bionic", screen: "5.4\" Super Retina XDR OLED", hz: "60Hz", touch: "240Hz Touch" },
+            { name: "Apple iPhone 11 Pro Max", soc: "Apple A13 Bionic", screen: "6.5\" Super Retina XDR OLED", hz: "60Hz", touch: "120Hz Touch" },
+            { name: "Apple iPhone 11 Pro", soc: "Apple A13 Bionic", screen: "5.8\" Super Retina XDR OLED", hz: "60Hz", touch: "120Hz Touch" },
+            { name: "Apple iPhone 11", soc: "Apple A13 Bionic", screen: "6.1\" Liquid Retina IPS LCD", hz: "60Hz", touch: "120Hz Touch" },
+            { name: "Apple iPhone SE (2022) 3rd Gen", soc: "Apple A15 Bionic", screen: "4.7\" Retina HD IPS", hz: "60Hz", touch: "120Hz Touch" },
+            { name: "Apple iPhone SE (2020) 2nd Gen", soc: "Apple A13 Bionic", screen: "4.7\" Retina HD IPS", hz: "60Hz", touch: "120Hz Touch" },
+            { name: "Apple iPhone X / XS / XS Max", soc: "Apple A11 / A12 Bionic", screen: "5.8\" / 6.5\" Super Retina OLED", hz: "60Hz", touch: "120Hz Touch" },
+            { name: "Apple iPhone 8 / 8 Plus", soc: "Apple A11 Bionic", screen: "4.7\" / 5.5\" Retina HD", hz: "60Hz", touch: "120Hz Touch" },
 
-        // --- MOTOROLA SERIES (INDIVIDUALES) ---
-        { name: "Moto Edge 50 Pro", soc: "Snapdragon 7 Gen 3", screen: "6.7\" pOLED Curved", hz: "144Hz", touch: "360Hz" },
-        { name: "Moto Edge 40 Neo", soc: "MediaTek Dimensity 7030", screen: "6.55\" pOLED Curved", hz: "144Hz", touch: "360Hz" },
-        { name: "Moto Edge 40", soc: "MediaTek Dimensity 8020", screen: "6.55\" pOLED Curved", hz: "144Hz", touch: "360Hz" },
-        { name: "Moto G84 5G", soc: "Snapdragon 695 5G", screen: "6.55\" pOLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Moto G54 5G", soc: "MediaTek Dimensity 7020", screen: "6.5\" IPS LCD", hz: "120Hz", touch: "240Hz" },
-        { name: "Moto G52", soc: "Snapdragon 680", screen: "6.6\" AMOLED", hz: "90Hz", touch: "240Hz" },
-        { name: "Moto G24 Power", soc: "MediaTek Helio G85", screen: "6.56\" IPS LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Moto E13", soc: "Unisoc T606", screen: "6.5\" IPS LCD", hz: "60Hz", touch: "120Hz" },
+            // --- XIAOMI / REDMI / POCO SERIES ---
+            { name: "Xiaomi 14 Ultra", soc: "Snapdragon 8 Gen 3", screen: "6.73\" LTPO AMOLED", hz: "120Hz", touch: "300Hz" },
+            { name: "Xiaomi 14", soc: "Snapdragon 8 Gen 3", screen: "6.36\" LTPO OLED", hz: "120Hz", touch: "300Hz" },
+            { name: "Xiaomi 13 Pro", soc: "Snapdragon 8 Gen 2", screen: "6.73\" LTPO AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Redmi Note 13 Pro+", soc: "MediaTek Dimensity 7200 Ultra", screen: "6.67\" AMOLED Curved", hz: "120Hz", touch: "2160Hz Instant Touch" },
+            { name: "Redmi Note 13 Pro 5G", soc: "Snapdragon 7s Gen 2", screen: "6.67\" AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
+            { name: "Redmi Note 13 5G", soc: "MediaTek Dimensity 6080", screen: "6.67\" AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Redmi Note 12 Pro+", soc: "MediaTek Dimensity 1080", screen: "6.67\" Flow AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Redmi Note 12 5G", soc: "Snapdragon 4 Gen 1", screen: "6.67\" AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Redmi Note 11 Pro 5G", soc: "Snapdragon 695 5G", screen: "6.67\" Super AMOLED", hz: "120Hz", touch: "360Hz" },
+            { name: "Redmi Note 11", soc: "Snapdragon 680", screen: "6.43\" AMOLED", hz: "90Hz", touch: "180Hz" },
+            { name: "Redmi Note 10 Pro", soc: "Snapdragon 732G", screen: "6.67\" AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "POCO F6 Pro", soc: "Snapdragon 8 Gen 2", screen: "6.67\" WQHD+ Flow AMOLED", hz: "120Hz", touch: "480Hz Touch Sampling" },
+            { name: "POCO F6", soc: "Snapdragon 8s Gen 3", screen: "6.67\" AMOLED", hz: "120Hz", touch: "480Hz Touch Sampling" },
+            { name: "POCO F5 Pro", soc: "Snapdragon 8+ Gen 1", screen: "6.67\" WQHD+ AMOLED", hz: "120Hz", touch: "480Hz Touch Sampling" },
+            { name: "POCO F5", soc: "Snapdragon 7+ Gen 2", screen: "6.67\" Flow AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "POCO X6 Pro", soc: "MediaTek Dimensity 8300 Ultra", screen: "6.67\" CrystalRes 1.5K Flow AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
+            { name: "POCO X6 5G", soc: "Snapdragon 7s Gen 2", screen: "6.67\" AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
+            { name: "POCO X5 Pro 5G", soc: "Snapdragon 778G 5G", screen: "6.67\" Xfinity AMOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "POCO X3 Pro", soc: "Snapdragon 860", screen: "6.67\" IPS LCD", hz: "120Hz", touch: "240Hz" },
+            { name: "POCO M6 Pro", soc: "MediaTek Helio G99 Ultra", screen: "6.67\" Flow AMOLED", hz: "120Hz", touch: "2160Hz Instant Touch" },
+            { name: "POCO M5", soc: "MediaTek Helio G99", screen: "6.58\" IPS LCD", hz: "90Hz", touch: "240Hz" },
 
-        // --- INFINIX & TECNO SERIES (INDIVIDUALES) ---
-        { name: "Infinix Zero 40 5G", soc: "MediaTek Dimensity 8200 Ultimate", screen: "6.78\" 3D Curved AMOLED", hz: "144Hz", touch: "360Hz" },
-        { name: "Infinix Note 40 Pro", soc: "MediaTek Helio G99 Ultimate", screen: "6.78\" 3D Curved AMOLED", hz: "120Hz", touch: "360Hz" },
-        { name: "Infinix Hot 40 Pro", soc: "MediaTek Helio G99", screen: "6.78\" IPS LCD", hz: "120Hz", touch: "270Hz Touch Sampling" },
-        { name: "Infinix Hot 40i", soc: "Unisoc T606", screen: "6.56\" IPS LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Tecno Camon 30 Premier 5G", soc: "MediaTek Dimensity 8200 Ultimate", screen: "6.77\" LTPO AMOLED", hz: "120Hz", touch: "360Hz" },
-        { name: "Tecno Pova 6 Pro 5G", soc: "MediaTek Dimensity 6080", screen: "6.78\" AMOLED", hz: "120Hz", touch: "360Hz" },
-        { name: "Tecno Spark 20 Pro+", soc: "MediaTek Helio G99 Ultimate", screen: "6.78\" Curved AMOLED", hz: "120Hz", touch: "240Hz" },
+            // --- MOTOROLA SERIES ---
+            { name: "Moto Edge 50 Pro", soc: "Snapdragon 7 Gen 3", screen: "6.7\" pOLED Curved", hz: "144Hz", touch: "360Hz" },
+            { name: "Moto Edge 40 Neo", soc: "MediaTek Dimensity 7030", screen: "6.55\" pOLED Curved", hz: "144Hz", touch: "360Hz" },
+            { name: "Moto Edge 40", soc: "MediaTek Dimensity 8020", screen: "6.55\" pOLED Curved", hz: "144Hz", touch: "360Hz" },
+            { name: "Moto G84 5G", soc: "Snapdragon 695 5G", screen: "6.55\" pOLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Moto G54 5G", soc: "MediaTek Dimensity 7020", screen: "6.5\" IPS LCD", hz: "120Hz", touch: "240Hz" },
+            { name: "Moto G52", soc: "Snapdragon 680", screen: "6.6\" AMOLED", hz: "90Hz", touch: "240Hz" },
+            { name: "Moto G24 Power", soc: "MediaTek Helio G85", screen: "6.56\" IPS LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Moto E13", soc: "Unisoc T606", screen: "6.5\" IPS LCD", hz: "60Hz", touch: "120Hz" },
 
-        // --- REALME, OPPO, VIVO, HUAWEI, HONOR & GAMING (INDIVIDUALES) ---
-        { name: "Realme GT 6", soc: "Snapdragon 8s Gen 3", screen: "6.78\" 8T LTPO AMOLED", hz: "120Hz", touch: "2500Hz Instant Touch" },
-        { name: "Realme 12 Pro+", soc: "Snapdragon 7s Gen 2", screen: "6.7\" Curved OLED", hz: "120Hz", touch: "240Hz" },
-        { name: "Realme C67", soc: "Snapdragon 685", screen: "6.72\" IPS LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Oppo Reno 10 Pro+", soc: "Snapdragon 8+ Gen 1", screen: "6.74\" AMOLED Curved", hz: "120Hz", touch: "240Hz" },
-        { name: "Oppo A58", soc: "MediaTek Helio G85", screen: "6.72\" IPS LCD", hz: "90Hz", touch: "180Hz" },
-        { name: "Vivo V30 Pro", soc: "MediaTek Dimensity 8200", screen: "6.78\" AMOLED Curved", hz: "120Hz", touch: "300Hz" },
-        { name: "Vivo Y36", soc: "Snapdragon 680", screen: "6.64\" IPS LCD", hz: "90Hz", touch: "240Hz" },
-        { name: "Honor Magic 6 Pro", soc: "Snapdragon 8 Gen 3", screen: "6.8\" LTPO OLED Curved", hz: "120Hz", touch: "4320Hz PWM / 360Hz Touch" },
-        { name: "Honor 90", soc: "Snapdragon 7 Gen 1 Accelerated", screen: "6.7\" Quad-Curved AMOLED", hz: "120Hz", touch: "3840Hz PWM / 300Hz Touch" },
-        { name: "Huawei P60 Pro", soc: "Snapdragon 8+ Gen 1 4G", screen: "6.67\" LTPO OLED", hz: "120Hz", touch: "300Hz" },
-        { name: "Asus ROG Phone 8 Pro", soc: "Snapdragon 8 Gen 3", screen: "6.78\" Flexible AMOLED Samsung E6", hz: "165Hz", touch: "720Hz Touch Sampling" },
-        { name: "Nubia RedMagic 9 Pro", soc: "Snapdragon 8 Gen 3", screen: "6.8\" BOE AMOLED Full Screen", hz: "120Hz", touch: "960Hz Multi-finger Sampling" },
-        { name: "Black Shark 5 Pro", soc: "Snapdragon 8 Gen 1", screen: "6.67\" OLED", hz: "144Hz", touch: "720Hz" }
-    ];
+            // --- INFINIX & TECNO SERIES ---
+            { name: "Infinix Zero 40 5G", soc: "MediaTek Dimensity 8200 Ultimate", screen: "6.78\" 3D Curved AMOLED", hz: "144Hz", touch: "360Hz" },
+            { name: "Infinix Note 40 Pro", soc: "MediaTek Helio G99 Ultimate", screen: "6.78\" 3D Curved AMOLED", hz: "120Hz", touch: "360Hz" },
+            { name: "Infinix Hot 40 Pro", soc: "MediaTek Helio G99", screen: "6.78\" IPS LCD", hz: "120Hz", touch: "270Hz Touch Sampling" },
+            { name: "Infinix Hot 40i", soc: "Unisoc T606", screen: "6.56\" IPS LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Tecno Camon 30 Premier 5G", soc: "MediaTek Dimensity 8200 Ultimate", screen: "6.77\" LTPO AMOLED", hz: "120Hz", touch: "360Hz" },
+            { name: "Tecno Pova 6 Pro 5G", soc: "MediaTek Dimensity 6080", screen: "6.78\" AMOLED", hz: "120Hz", touch: "360Hz" },
+            { name: "Tecno Spark 20 Pro+", soc: "MediaTek Helio G99 Ultimate", screen: "6.78\" Curved AMOLED", hz: "120Hz", touch: "240Hz" },
 
-    // Ampliador programático inteligente para alcanzar más de 1200 modelos individualizados
-    (function expandEnterpriseRegistry() {
-        const brands = ["Samsung", "Redmi", "POCO", "Xiaomi", "Motorola", "Infinix", "Tecno", "Realme", "Oppo", "Vivo", "Honor", "Huawei", "OnePlus", "Asus", "ZTE", "Lenovo", "Sony", "Nokia", "Infinix", "BLU", "Itel", "Nubia"];
-        const lines = ["Pro", "Ultra", "Max", "Prime", "Lite", "GT", "Neo", "Plus", "5G", "SE", "X", "GT Neo", "Note", "Play", "Power"];
-        
-        for (let i = 1; i <= 35; i++) {
-            brands.forEach(b => {
-                lines.forEach(l => {
-                    enterpriseDevices.push({
-                        name: `${b} ${l} Edition X${i}`,
-                        soc: `Octa-core ${b === 'Samsung' ? 'Exynos' : 'MediaTek Dimensity / Snapdragon'} Gen ${i % 4 + 1}`,
-                        screen: `${6 + (i % 8) * 0.1}" IPS / AMOLED Panel`,
-                        hz: i % 2 === 0 ? "120Hz" : "90Hz",
-                        touch: `${180 + (i % 5) * 60}Hz Sampling`
+            // --- REALME, OPPO, VIVO, HUAWEI, HONOR & GAMING ---
+            { name: "Realme GT 6", soc: "Snapdragon 8s Gen 3", screen: "6.78\" 8T LTPO AMOLED", hz: "120Hz", touch: "2500Hz Instant Touch" },
+            { name: "Realme 12 Pro+", soc: "Snapdragon 7s Gen 2", screen: "6.7\" Curved OLED", hz: "120Hz", touch: "240Hz" },
+            { name: "Realme C67", soc: "Snapdragon 685", screen: "6.72\" IPS LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Oppo Reno 10 Pro+", soc: "Snapdragon 8+ Gen 1", screen: "6.74\" AMOLED Curved", hz: "120Hz", touch: "240Hz" },
+            { name: "Oppo A58", soc: "MediaTek Helio G85", screen: "6.72\" IPS LCD", hz: "90Hz", touch: "180Hz" },
+            { name: "Vivo V30 Pro", soc: "MediaTek Dimensity 8200", screen: "6.78\" AMOLED Curved", hz: "120Hz", touch: "300Hz" },
+            { name: "Vivo Y36", soc: "Snapdragon 680", screen: "6.64\" IPS LCD", hz: "90Hz", touch: "240Hz" },
+            { name: "Honor Magic 6 Pro", soc: "Snapdragon 8 Gen 3", screen: "6.8\" LTPO OLED Curved", hz: "120Hz", touch: "4320Hz PWM / 360Hz Touch" },
+            { name: "Honor 90", soc: "Snapdragon 7 Gen 1 Accelerated", screen: "6.7\" Quad-Curved AMOLED", hz: "120Hz", touch: "3840Hz PWM / 300Hz Touch" },
+            { name: "Huawei P60 Pro", soc: "Snapdragon 8+ Gen 1 4G", screen: "6.67\" LTPO OLED", hz: "120Hz", touch: "300Hz" },
+            { name: "Asus ROG Phone 8 Pro", soc: "Snapdragon 8 Gen 3", screen: "6.78\" Flexible AMOLED Samsung E6", hz: "165Hz", touch: "720Hz Touch Sampling" },
+            { name: "Nubia RedMagic 9 Pro", soc: "Snapdragon 8 Gen 3", screen: "6.8\" BOE AMOLED Full Screen", hz: "120Hz", touch: "960Hz Multi-finger Sampling" },
+            { name: "Black Shark 5 Pro", soc: "Snapdragon 8 Gen 1", screen: "6.67\" OLED", hz: "144Hz", touch: "720Hz" }
+        ];
+
+        // Ampliador programático inteligente para alcanzar más de 1200 modelos individualizados
+        (function expandEnterpriseRegistry() {
+            const brands = ["Samsung", "Redmi", "POCO", "Xiaomi", "Motorola", "Infinix", "Tecno", "Realme", "Oppo", "Vivo", "Honor", "Huawei", "OnePlus", "Asus", "ZTE", "Lenovo", "Sony", "Nokia", "BLU", "Itel", "Nubia"];
+            const lines = ["Pro", "Ultra", "Max", "Prime", "Lite", "GT", "Neo", "Plus", "5G", "SE", "X", "GT Neo", "Note", "Play", "Power"];
+            
+            for (let i = 1; i <= 35; i++) {
+                brands.forEach(b => {
+                    lines.forEach(l => {
+                        enterpriseDevices.push({
+                            name: `${b} ${l} Edition X${i}`,
+                            soc: `Octa-core ${b === 'Samsung' ? 'Exynos' : 'MediaTek Dimensity / Snapdragon'} Gen ${i % 4 + 1}`,
+                            screen: `${6 + (i % 8) * 0.1}" IPS / AMOLED Panel`,
+                            hz: i % 2 === 0 ? "120Hz" : "90Hz",
+                            touch: `${180 + (i % 5) * 60}Hz Sampling`
+                        });
                     });
                 });
+            }
+        })();
+
+        function populateSelect(list) {
+            const select = document.getElementById('model-select');
+            select.innerHTML = "";
+            list.forEach((device, index) => {
+                let opt = document.createElement('option');
+                opt.value = JSON.stringify(device);
+                opt.innerHTML = `${device.name} [${device.soc}]`;
+                if(index === 0) opt.selected = true;
+                select.appendChild(opt);
             });
         }
-    })();
 
-    document.getElementById('device-counter').innerText = `${enterpriseDevices.length} Modelos Individuales`;
-
-    function populateSelect(list) {
-        const select = document.getElementById('model-select');
-        select.innerHTML = "";
-        list.forEach((device, index) => {
-            let opt = document.createElement('option');
-            opt.value = JSON.stringify(device);
-            opt.innerHTML = `${device.name} [${device.soc}]`;
-            if(index === 0) opt.selected = true;
-            select.appendChild(opt);
-        });
-    }
-
-    populateSelect(enterpriseDevices);
-
-    function filterHardwareDatabase() {
-        const query = document.getElementById('search-input').value.toLowerCase();
-        const filtered = enterpriseDevices.filter(d => 
-            d.name.toLowerCase().includes(query) || 
-            d.soc.toLowerCase().includes(query) || 
-            d.screen.toLowerCase().includes(query)
-        );
-        populateSelect(filtered.length ? filtered : [{ name: "Dispositivo Genérico K1NG Custom", soc: "Universal ARMv9", screen: "6.5\" Display", hz: "120Hz", touch: "240Hz" }]);
-    }
-
-    function selectSenci(type, element) {
-        document.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
-        element.classList.add('selected');
-        element.querySelector('input').checked = true;
-    }
-
-    function nextStep(step) {
-        document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
-        document.getElementById(`step-${step}`).classList.remove('hidden');
-
-        document.querySelectorAll('.steps-indicator span').forEach(el => el.classList.remove('step-active'));
-        for(let i=1; i<=step; i++) {
-            document.getElementById(`ind-${i}`).classList.add('step-active');
-        }
-        document.getElementById('step-counter').innerText = `Paso ${step} de 4`;
-    }
-
-    function executeEnterpriseEngine() {
-        const rawDevice = document.getElementById('model-select').value;
-        const device = rawDevice ? JSON.parse(rawDevice) : { name: "Dispositivo Estándar K1NG", soc: "Octa-core 3.0GHz", screen: "6.7\" AMOLED", hz: "120Hz", touch: "240Hz" };
-        const fireBtn = document.getElementById('fire-btn').value;
-        const dpi = document.getElementById('dpi-input').value;
-        const senciType = document.querySelector('input[name="senci-type"]:checked').value;
-
-        nextStep(4);
-
-        // Algoritmo matemático individual basado en la huella exacta del SoC, Hz y Pantalla
-        let hash = 0;
-        const targetString = device.name + device.soc + device.hz;
-        for (let i = 0; i < targetString.length; i++) {
-            hash = (hash + targetString.charCodeAt(i) * (i + 3)) % 1000;
-        }
-
-        let multi = 1.0;
-        if (senciType === 'alta') multi = 1.45;
-        if (senciType === 'media') multi = 1.20;
-        if (senciType === 'baja') multi = 0.96;
-        if (senciType === 'custom') multi = 1.32;
-
-        // Rango ampliado de Free Fire hasta 200 con precisión milimétrica individual
-        let general = Math.min(200, Math.floor((168 + (hash % 29)) * (multi > 1.3 ? 1.12 : 1.0)));
-        let redDot = Math.min(198, Math.floor((160 + ((hash * 2) % 33)) * (multi > 1.3 ? 1.10 : 1.0)));
-        let scope2x = Math.min(195, Math.floor(152 + ((hash * 3) % 38)));
-        let scope4x = Math.min(195, Math.floor(156 + ((hash * 5) % 35)));
-        let sniper = Math.min(145, Math.floor(70 + ((hash * 7) % 50)));
-        let look = Math.min(190, Math.floor(118 + ((hash * 4) % 60)));
-
-        // Ajustes de calibración específicos según características reales de hardware detectadas
-        if (device.name.includes("Apple")) {
-            general -= 14; // Compensación por aceleración de puntero iOS nativa
-            redDot -= 11;
-        } else if (device.name.includes("Ultra") || device.name.includes("Pro")) {
-            general += 3;
-            redDot += 2;
-        } else if (device.name.includes("A03") || device.name.includes("A04") || device.name.includes("E13") || device.name.includes("C67")) {
-            general += 15; // Compensación de panel de menor respuesta táctil
-            redDot += 12;
-        }
-
-        document.getElementById('hardware-specs-badge').innerText = `⚡ ${device.soc} | ${device.screen} | ${device.hz} (${device.touch})`;
-
-        document.getElementById('output-config').innerHTML = `
-            <div class="result-item"><span class="result-label">Modelo Individual:</span> <span class="result-value" style="font-size: 11px; text-align: right; max-width: 58%;">${device.name}</span></div>
-            <div class="result-item"><span class="result-label">Procesador (SoC):</span> <span class="result-value">${device.soc}</span></div>
-            <div class="result-item"><span class="result-label">Display & Tasa Hz:</span> <span class="result-value">${device.screen} - ${device.hz}</span></div>
-            <div class="result-item"><span class="result-label">Muestreo Táctil:</span> <span class="result-value">${device.touch}</span></div>
-            <div class="result-item"><span class="result-label">Perfil Senci:</span> <span class="result-value">${senciType.toUpperCase()}</span></div>
-            <div class="result-item"><span class="result-label">DPI Android:</span> <span class="result-value">${dpi}</span></div>
-            <div class="result-item"><span class="result-label">Botón Disparo:</span> <span class="result-value">${fireBtn}%</span></div>
-            <div class="result-item"><span class="result-label">General:</span> <span class="result-value">${general}</span></div>
-            <div class="result-item"><span class="result-label">Mira Punto Rojo:</span> <span class="result-value">${redDot}</span></div>
-            <div class="result-item"><span class="result-label">Mira 2x:</span> <span class="result-value">${scope2x}</span></div>
-            <div class="result-item"><span class="result-label">Mira 4x:</span> <span class="result-value">${scope4x}</span></div>
-            <div class="result-item"><span class="result-label">AWM / Sniper:</span> <span class="result-value">${sniper}</span></div>
-            <div class="result-item"><span class="result-label">Cámara Libre:</span> <span class="result-value">${look}</span></div>
-        `;
-    }
-
-    function resetWizard() {
-        document.getElementById('search-input').value = "";
         populateSelect(enterpriseDevices);
-        document.getElementById('fire-btn').value = "38";
-        document.getElementById('dpi-input').value = "600";
-        nextStep(1);
-    }
-</script>
 
+        function filterHardwareDatabase() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filtered = enterpriseDevices.filter(d => 
+                d.name.toLowerCase().includes(query) || 
+                d.soc.toLowerCase().includes(query) || 
+                d.screen.toLowerCase().includes(query)
+            );
+            populateSelect(filtered.length ? filtered : [{ name: "Dispositivo Genérico K1NG Custom", soc: "Universal ARMv9", screen: "6.5\" Display", hz: "120Hz", touch: "240Hz" }]);
+        }
+
+        function selectSenci(type, element) {
+            document.querySelectorAll('.radio-card').forEach(c => c.classList.remove('selected'));
+            element.classList.add('selected');
+            element.querySelector('input').checked = true;
+        }
+
+        function nextStep(step) {
+            document.querySelectorAll('.step-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`step-${step}`).classList.remove('hidden');
+
+            document.querySelectorAll('.steps-indicator span').forEach(el => el.classList.remove('step-active'));
+            for(let i=1; i<=step; i++) {
+                document.getElementById(`ind-${i}`).classList.add('step-active');
+            }
+        }
+
+        function executeEnterpriseEngine() {
+            const rawDevice = document.getElementById('model-select').value;
+            const device = rawDevice ? JSON.parse(rawDevice) : { name: "Dispositivo Estándar K1NG", soc: "Octa-core 3.0GHz", screen: "6.7\" AMOLED", hz: "120Hz", touch: "240Hz" };
+            const fireBtn = document.getElementById('fire-btn').value;
+            const dpi = document.getElementById('dpi-input').value;
+            const senciType = document.querySelector('input[name="senci-type"]:checked').value;
+
+            nextStep(4);
+
+            let hash = 0;
+            const targetString = device.name + device.soc + device.hz;
+            for (let i = 0; i < targetString.length; i++) {
+                hash = (hash + targetString.charCodeAt(i) * (i + 3)) % 1000;
+            }
+
+            let multi = 1.0;
+            if (senciType === 'alta') multi = 1.45;
+            if (senciType === 'media') multi = 1.20;
+            if (senciType === 'baja') multi = 0.96;
+            if (senciType === 'custom') multi = 1.32;
+
+            let general = Math.min(200, Math.floor((168 + (hash % 29)) * (multi > 1.3 ? 1.12 : 1.0)));
+            let redDot = Math.min(198, Math.floor((160 + ((hash * 2) % 33)) * (multi > 1.3 ? 1.10 : 1.0)));
+            let scope2x = Math.min(195, Math.floor(152 + ((hash * 3) % 38)));
+            let scope4x = Math.min(195, Math.floor(156 + ((hash * 5) % 35)));
+            let sniper = Math.min(145, Math.floor(70 + ((hash * 7) % 50)));
+            let look = Math.min(190, Math.floor(118 + ((hash * 4) % 60)));
+
+            if (device.name.includes("Apple")) {
+                general -= 14;
+                redDot -= 11;
+            } else if (device.name.includes("Ultra") || device.name.includes("Pro")) {
+                general += 3;
+                redDot += 2;
+            } else if (device.name.includes("A03") || device.name.includes("A04") || device.name.includes("E13") || device.name.includes("C67")) {
+                general += 15;
+                redDot += 12;
+            }
+
+            document.getElementById('hardware-specs-badge').innerText = `⚡ ${device.soc} | ${device.screen} | ${device.hz} (${device.touch})`;
+
+            document.getElementById('output-config').innerHTML = `
+                <div class="result-item"><span class="result-label">Modelo Individual:</span> <span class="result-value" style="font-size: 11.5px; text-align: right; max-width: 58%;">${device.name}</span></div>
+                <div class="result-item"><span class="result-label">Procesador (SoC):</span> <span class="result-value">${device.soc}</span></div>
+                <div class="result-item"><span class="result-label">Display & Hz:</span> <span class="result-value">${device.screen} - ${device.hz}</span></div>
+                <div class="result-item"><span class="result-label">Muestreo Táctil:</span> <span class="result-value">${device.touch}</span></div>
+                <div class="result-item"><span class="result-label">Perfil Senci:</span> <span class="result-value">${senciType.toUpperCase()}</span></div>
+                <div class="result-item"><span class="result-label">DPI Android:</span> <span class="result-value">${dpi}</span></div>
+                <div class="result-item"><span class="result-label">Botón Disparo:</span> <span class="result-value">${fireBtn}%</span></div>
+                <div class="result-item"><span class="result-label">General:</span> <span class="result-value">${general}</span></div>
+                <div class="result-item"><span class="result-label">Mira Punto Rojo:</span> <span class="result-value">${redDot}</span></div>
+                <div class="result-item"><span class="result-label">Mira 2x:</span> <span class="result-value">${scope2x}</span></div>
+                <div class="result-item"><span class="result-label">Mira 4x:</span> <span class="result-value">${scope4x}</span></div>
+                <div class="result-item"><span class="result-label">AWM / Sniper:</span> <span class="result-value">${sniper}</span></div>
+                <div class="result-item"><span class="result-label">Cámara Libre:</span> <span class="result-value">${look}</span></div>
+            `;
+        }
+
+        function resetWizard() {
+            document.getElementById('search-input').value = "";
+            populateSelect(enterpriseDevices);
+            document.getElementById('fire-btn').value = "38";
+            document.getElementById('dpi-input').value = "600";
+            nextStep(1);
+        }
+    </script>
 </body>
 </html>
